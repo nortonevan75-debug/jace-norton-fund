@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jace Marlon Norton Scholarship Fund</title>
+    <style>
+        /* Creative, high-end modern styling palette */
+        :root {
+            --primary: #1a365d;       /* Deep ocean navy */
+            --primary-light: #2b6cb0; /* Vibrant wave blue */
+            --accent: #d69e2e;        /* Golden hour amber / sunset gold */
+            --accent-hover: #b7791f;
+            --text-dark: #2d3748;     /* Charcoal for contrast */
+            --bg-gradient: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.6);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+        }
+
+        /* Hero Section with Creative Wave Overlay */
+        header {
+            position: relative;
+            background: linear-gradient(rgba(26, 54, 93, 0.75), rgba(43, 108, 176, 0.85)), 
+                        url('image_f814ab.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 160px 20px 200px 20px;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.6rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #fbd38d; /* Soft golden tint */
+            margin-bottom: 40px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .btn-donate {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent) 0%, #ecc94b 100%);
+            color: #1a202c;
+            padding: 18px 45px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 25px rgba(214, 158, 46, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-donate:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(214, 158, 46, 0.6);
+        }
+
+        /* Animated Dynamic Wave Shape at bottom of Header */
+        .wave-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+
+        .wave-container svg {
+            position: relative;
+            display: block;
+            width: calc(150% + 1.3px);
+            height: 80px;
+        }
+
+        .wave-container .wave-fill {
+            fill: #edf2f7; /* Matches the background grid gradient top color */
+        }
+
+        /* Main Content Grid */
+        .container {
+            max-width: 1050px;
+            margin: -80px auto 0 auto; /* Pulls cards up over the wave slightly for elite UI look */
+            padding: 0 20px 60px 20px;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* High Creative Glassmorphic Cards */
+        section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 50px;
+            border-radius: 24px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.09);
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 32px;
+            background: linear-gradient(to bottom, var(--accent), var(--primary-light));
+            border-radius: 4px;
+        }
+
+        /* Creative Grid for Biography */
+        .legacy-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .legacy-grid {
+                grid-template-columns: 1fr 1.2fr;
+            }
+        }
+
+        .photo-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            transition: transform 0.5s ease;
+        }
+
+        .photo-wrapper:hover {
+            transform: scale(1.02) rotate(1deg);
+        }
+
+        .memorial-photo {
+            width: 100%;
+            display: block;
+        }
+
+        .biography-text p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 20px;
+        }
+
+        /* High Pop Scholarship Cards */
+        .criteria-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        @media (min-width: 768px) {
+            .criteria-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .criterion-card {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border-top: 4px solid var(--primary-light);
+            transition: all 0.3s ease;
+        }
+
+        .criterion-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--accent);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.05);
+        }
+
+        .criterion-card h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .criterion-card p {
+            font-size: 0.95rem;
+            color: #718096;
+        }
+
+        /* Dynamic & Creative Donation Box */
+        .donation-zone {
+            background: linear-gradient(135deg, var(--primary) 0%, #2a4365 100%);
+            color: white;
+            border: none;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+        }
+
+        .donation-zone h2 {
+            color: white;
+            justify-content: center;
+        }
+
+        .donation-zone h2::before {
+            display: none; /* Centered layout doesn't need the left bar */
+        }
+
+        .donation-zone p {
+            color: #e2e8f0;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+
+        /* Online Donation Spotlight Box */
+        .online-donate-card {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 40px 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .online-donate-card h3 {
+            font-size: 1.5rem;
+            color: #fbd38d;
+            margin-bottom: 10px;
+        }
+
+        .online-donate-card p {
+            font-size: 1rem;
+            color: #e2e8f0;
+            margin-bottom: 25px;
+        }
+
+        .btn-online-portal {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #ecc94b 0%, var(--accent) 100%);
+            color: #1a202c;
+            padding: 16px 40px;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(214, 158, 46, 0.3);
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-online-portal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(214, 158, 46, 0.5);
+            background: linear-gradient(135deg, #fff 0%, #ecc94b 100%);
+        }
+
+        .divider-or {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 40px 0;
+            color: #a0aec0;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .divider-or::before, .divider-or::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .divider-or:not(:empty)::before { margin-right: .5em; }
+        .divider-or:not(:empty)::after { margin-left: .5em; }
+
+        .check-instruction-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 16px;
+            margin-top: 20px;
+            position: relative;
+            text-align: left;
+        }
+
+        .check-instruction-box::after {
+            content: '✏️';
+            position: absolute;
+            top: -20px;
+            right: 30px;
+            font-size: 2.5rem;
+            opacity: 0.15;
+        }
+
+        .check-line {
+            font-size: 1.1rem;
+            padding: 10px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+            margin-bottom: 15px;
+        }
+
+        .check-line strong {
+            color: #fbd38d;
+        }
+
+        .address-block {
+            margin-top: 25px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .map-action-btn {
+            display: inline-flex;
+            align-items: center;
+            background: white;
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            transition: all 0.2s;
+        }
+
+        .map-action-btn:hover {
+            background: var(--accent);
+            color: #1a202c;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 20px 60px 20px;
+            color: #718096;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="hero-content">
+            <h1 class="hero-title">Jace Marlon Norton</h1>
+            <p class="hero-subtitle">Scholarship Fund</p>
+            <a href="#donate" class="btn-donate">Support the Fund</a>
+        </div>
+        
+        <div class="wave-container">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="wave-fill"></path>
+            </svg>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section id="about">
+            <h2>Honoring His Light</h2>
+            <div class="legacy-grid">
+                <div class="photo-wrapper">
+                    <img src="image_f814ab.jpg" alt="In Loving Memory - Jace Marlon Norton" class="memorial-photo">
+                </div>
+                <div class="biography-text">
+                    <p>This scholarship fund shines a perpetual spotlight on the life, deep kindness, and joyful memory of Jace Marlon Norton. Jace left an incredible mark on this world, radiating warmth and true friendship to everyone fortunate enough to cross his path.</p>
+                    <p>To ensure his vibrant spirit and passions continue to alter the world for the better, this fund has been established to support the next generation of hard-working tradespeople driving our communities forward.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="criteria">
+            <h2>The Scholarship Blueprint</h2>
+            <p style="color: #4a5568; margin-bottom: 10px;">Designed to carry Jace’s unique spirit forward by uplifting students who show grit, determination, and a passion for working with their hands.</p>
+            
+            <div class="criteria-cards">
+                <div class="criterion-card">
+                    <h3>Eligibility</h3>
+                    <p>Open exclusively to graduating high school seniors residing within <strong>Shiawassee County</strong> who are pursuing heavy equipment and skilled trades.</p>
+                </div>
+                <div class="criterion-card">
+                    <h3>The Vision</h3>
+                    <p>Providing direct financial aid for tuition, program fees, and essential field equipment—including <strong>work boots, specialty work pants, tools,</strong> or other item requirements.</p>
+                </div>
+                <div class="criterion-card">
+                    <h3>Administration</h3>
+                    <p>Proudly overseen, protected, and distributed by the trusted <strong>Shiawassee Community Foundation</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="donate" class="donation-zone">
+            <h2>Fuel the Fund</h2>
+            <p>Your generosity fuels opportunities for local youth entering the trades, securing a promise that Jace's impact is ongoing. All financial gifts are processed safely and securely through the foundation.</p>
+            
+            <div class="online-donate-card">
+                <h3>Option 1: Give Safely Online</h3>
+                <p>Make an immediate, secure online credit or debit card contribution through the foundation portal.</p>
+                <a href="https://www.shiacf.org/donate/" target="_blank" rel="noopener noreferrer" class="btn-online-portal">
+                    💻 Donate Online Now
+                </a>
+            </div>
+
+            <div class="divider-or">or</div>
+
+            <div style="text-align: left; margin-bottom: 10px;">
+                <h3 style="font-size: 1.3rem; color: #fbd38d; margin-bottom: 5px; text-align: center;">Option 2: Donate via Physical Check</h3>
+                <p style="text-align: center; color: #cbd5e0; font-size: 0.95rem;">Please use the formatting details below to ensure your contribution routes properly to Jace's fund.</p>
+            </div>
+
+            <div class="check-instruction-box">
+                <div class="check-line">
+                    Make Check Out To: <strong>Shiawassee Community Foundation</strong>
+                </div>
+                <div class="check-line" style="border: none; margin-bottom: 0;">
+                    Crucial Memo Line: <strong>Jace Marlon Norton</strong>
+                </div>
+            </div>
+
+            <div style="text-align: center; width: 100%;">
+                <div class="address-block">
+                    <p style="font-weight: 700; color: #fbd38d; margin-bottom: 5px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">Mailing Address</p>
+                    <p style="font-size: 1.1rem; font-style: normal;">
+                        Shiawassee Community Foundation<br>
+                        P.O. Box 753<br>
+                        Owosso, MI 48867
+                    </p>
+                    <a class="map-action-btn" href="https://www.google.com/maps/place/217+N+Washington+St+%23104,+Owosso,+MI+48867" target="_blank" rel="noopener noreferrer">
+                        📍 View Foundation Info
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 The Norton Family. All rights reserved.</p>
+        <p style="font-size: 0.85rem; color: #a0aec0; margin-top: 8px; font-weight: 300; letter-spacing: 1px;">Building the Future • Always In Our Hearts</p>
+    </footer>
+
+</body>
+</html>
